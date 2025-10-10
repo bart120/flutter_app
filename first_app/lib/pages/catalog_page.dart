@@ -96,6 +96,13 @@ class _CatalogPageState extends State<CatalogPage> {
                         return ProductCard(
                           product: product,
                           colorScheme: scheme,
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              '/detail',
+                              arguments: product,
+                            );
+                          },
                         );
                       },
                     ),

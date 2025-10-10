@@ -1,4 +1,6 @@
+import 'package:first_app/models/product.dart';
 import 'package:first_app/pages/catalog_page.dart';
+import 'package:first_app/pages/product_detail_page.dart';
 import 'package:first_app/pages/profil_page.dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +32,11 @@ class MyApp extends StatelessWidget {
         switch (settings.name) {
           case '/':
             return MaterialPageRoute(builder: (_) => const CatalogPage());
+          case '/detail':
+            final product = settings.arguments as Product;
+            return MaterialPageRoute(
+              builder: (_) => ProductDetailPage(product: product),
+            );
           case '/cart':
             return MaterialPageRoute(builder: (_) => const CatalogPage());
           case '/about':
