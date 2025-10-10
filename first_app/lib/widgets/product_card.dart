@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
-  final ColorScheme scheme;
+  final ColorScheme colorScheme;
 
-  const ProductCard({super.key, required this.product, required this.scheme});
+  const ProductCard({
+    super.key,
+    required this.product,
+    required this.colorScheme,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +17,7 @@ class ProductCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: scheme.outlineVariant),
+        border: Border.all(color: colorScheme.outlineVariant),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -1,4 +1,5 @@
 import 'package:first_app/models/product.dart';
+import 'package:first_app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
 class CatalogPage extends StatefulWidget {
@@ -13,6 +14,8 @@ class _CatalogPageState extends State<CatalogPage> {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    
     return Scaffold(
       appBar: AppBar(title: const Text('Catalogue')),
       body: SafeArea(
@@ -37,6 +40,7 @@ class _CatalogPageState extends State<CatalogPage> {
                       itemCount: products.length,
                       itemBuilder: (_, i) {
                         final product = products[i];
+                        return ProductCard(product: product, colorScheme: scheme)
                       },
                     ),
             ),
