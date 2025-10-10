@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:first_app/models/product.dart';
 import 'package:first_app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
@@ -11,16 +13,25 @@ class CatalogPage extends StatefulWidget {
 
 class _CatalogPageState extends State<CatalogPage> {
   final _searchController = TextEditingController();
-  String searchTerm = '';
+  String _searchTerm = '';
+  String _category = 'Toutes';
+
+  List<String> get categories =>
+      //['Toutes', ...{for (var p in demoProducts.map((p) => p.category)) p.category}].toSet().toList();
+      [
+        'Toutes',
+        ...{for (final p in demoProducts) p.category},
+      ];
 
   List<Product> get products {
-    final query = searchTerm.trim().toLowerCase();
+    final query = _searchTerm.trim().toLowerCase();
     return demoProducts.where((p) {
+      final okCategory = _category == 'Toutes' || p.category == _category;
       final okSearch =
           //query.isEmpty ||
           p.name.toLowerCase().contains(query) ||
           p.description.toLowerCase().contains(query);
-      return okSearch;
+      return okSearch && okCategory;
     }).toList();
   }
 
@@ -47,8 +58,18 @@ class _CatalogPageState extends State<CatalogPage> {
                         border: OutlineInputBorder(),
                         isDense: true,
                       ),
-                      onChanged: (value) => setState(() => searchTerm = value),
+                      onChanged: (value) => setState(() => _searchTerm = value),
                     ),
+                  ),
+                  const SizedBox(width: 8),
+                  DropdownButton<String>(
+                    value: _category,
+                    items: [
+                      for (final c in categories)
+                        DropdownMenuItem(value: c, child: Text(c)),
+                    ],
+                    onChanged: (value) =>
+                        setState(() => _category = value ?? 'Toutes'),
                   ),
                 ],
               ),
