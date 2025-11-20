@@ -8,6 +8,11 @@ Développer une application Flutter fonctionnelle permettant :
 3. **Utilisation du GPS** du téléphone (lat/lon en temps réel).  
 4. **Ouverture de l’application de cartes** (Google Maps / Plans) via `url_launcher`.  
 5. Présentation de l’application le **Jour 2** (10 minutes par binôme).
+6. **Si le groupe est composé de 3 étudiants** :  
+Ajouter une fonctionnalité **“Villes favorites”** persistée en **SQLite** :
+   - possibilité d’**enregistrer jusqu’à 10 villes** en favoris,
+   - affichage d’une **liste des villes favorites**,
+   - possibilité de supprimer un favori.
 
 ---
 
